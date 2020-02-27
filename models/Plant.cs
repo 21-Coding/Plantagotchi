@@ -10,6 +10,8 @@ namespace Grow.Models
         public int Hydration { get; set; }
         public int Hunger { get; set; }
         public int Sun { get; set; }
+        public int Maturity { get; set; }
+
         
         public Plant()
         {
@@ -18,23 +20,28 @@ namespace Grow.Models
             Hydration = 20;
             Hunger = 20;
             Sun = 20;
+            Maturity = 0;
         }
 
         public void Water()
         {
             Console.WriteLine("Your plant got watered!");
             Hydration += 5;
+            Maturity +=5;
         }
         public void Feed()
         {
             Console.WriteLine("Your plant got some nutrition!");
             Hunger += 5;
+            Maturity +=5;
         }
         public void GiveSunshine()
         {
             Console.WriteLine("Your plant soaked up some serious sun");
             Sun +=5;
+            Maturity +=5;
         }
+      
         
         
         public void Disaster()
@@ -85,6 +92,7 @@ namespace Grow.Models
             Console.WriteLine("Current water level: " + Hydration);
             Console.WriteLine("Current nutrition level: " + Hunger);
             Console.WriteLine("Current sun level: " + Sun);
+            Console.WriteLine("Current maturation level: " + Maturity);
         }
 
         public static void StartGame()
@@ -120,6 +128,10 @@ namespace Grow.Models
             if (Hydration == 0 || Sun == 0 || Hunger == 0)
             {
                 EndGame();
+            }
+            else if (Maturity >= 25)
+            {
+                Harvest();
             }
             else 
             {
@@ -165,6 +177,10 @@ namespace Grow.Models
         public static void EndGame()
         {
             Console.WriteLine("Your plant didn't make it.");
+        }
+        public static void Harvest()
+        {
+            Console.WriteLine("Your plant has outgrown its pot! Its time to harvest!");
         }
    }
 }
