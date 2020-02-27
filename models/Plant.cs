@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Threading;
 
 namespace Grow.Models
 {
@@ -25,22 +27,22 @@ namespace Grow.Models
 
         public void Water()
         {
-            Console.WriteLine("**********************************");
-            Console.WriteLine("Your plant got watered!");
+            TypeLineFast("**********************************" + Environment.NewLine);
+            TypeLine("Your plant got watered!" + Environment.NewLine);
             Hydration += 5;
             Maturity +=5;
         }
         public void Feed()
         {
-            Console.WriteLine("**********************************");
-            Console.WriteLine("Your plant got some nutrition!");
+            TypeLineFast("**********************************" + Environment.NewLine);
+            TypeLine("Your plant got some nutrition!" + Environment.NewLine);
             Hunger += 5;
             Maturity +=5;
         }
         public void GiveSunshine()
         {
-            Console.WriteLine("**********************************");
-            Console.WriteLine("Your plant soaked up some serious sun");
+            TypeLineFast("**********************************" + Environment.NewLine);
+            TypeLine("Your plant soaked up some serious sun" + Environment.NewLine);
             Sun +=5;
             Maturity +=5;
         }
@@ -70,55 +72,57 @@ namespace Grow.Models
         }
         private void Windstorm()
         {
-            Console.WriteLine("**********************************");
-            Console.WriteLine("~~~~There was a crazy windstorm! Hydration is lost~~~~");
+            TypeLineFast("**********************************" + Environment.NewLine);
+            TypeLine("~~~~There was a crazy windstorm! Hydration is lost~~~~" + Environment.NewLine);
             Hydration -= 5;
         }
         private void AphidAttack()
         {
-            Console.WriteLine("**********************************");
-            Console.WriteLine("~~~~Aphids attacked! Your plant needs nutrition~~~~~");
+            TypeLineFast("**********************************" + Environment.NewLine);
+            TypeLine("~~~~Aphids attacked! Your plant needs nutrition~~~~~" + Environment.NewLine);
             Hunger -= 5;
         }
         private void CloudAttack()
         {
-            Console.WriteLine("**********************************");
-            Console.WriteLine("~~~~Intense PNW clouds, your plant is desperate for sun~~~~~");
+            TypeLineFast("**********************************" + Environment.NewLine);
+            TypeLine("~~~~Intense PNW clouds, your plant is desperate for sun~~~~~" + Environment.NewLine);
             Sun -= 5;
         }
         private void ClearDay()
         {
-            Console.WriteLine("**********************************");
-            Console.WriteLine("~~~~It was a lovely day and your plant was happy~~~~");
+            TypeLineFast("**********************************" + Environment.NewLine);
+            TypeLine("~~~~It was a lovely day and your plant was happy~~~~" + Environment.NewLine);
         }
 
         public void DisplayStats()
         {
-            Console.WriteLine("**********************************");
-            Console.WriteLine(Name + "'s current stats:");
-            Console.WriteLine("Water level: " + Hydration);
-            Console.WriteLine("Nutrition level: " + Hunger);
-            Console.WriteLine("Sun level: " + Sun);
-            Console.WriteLine("Maturation level: " + Maturity);
+            TypeLineFast("**********************************" + Environment.NewLine);
+            TypeLineFast(Name + "'s current stats:" + Environment.NewLine);
+            TypeLineFast("Water level: " + Hydration + Environment.NewLine);
+            TypeLineFast("Nutrition level: " + Hunger + Environment.NewLine);
+            TypeLineFast("Sun level: " + Sun + Environment.NewLine);
+            TypeLineFast("Maturation level: " + Maturity + Environment.NewLine);
         }
 
         public static void StartGame()
         {
+            
+            UnicodeEncoding unicode = new UnicodeEncoding();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("*********************************");
-            Console.WriteLine("Welcome to the Plantagotchi");
-            Console.WriteLine("*********************************");
-            Console.Write("Please enter a name for your plant: ");
+            TypeLineFast("*********************************" + Environment.NewLine);
+            TypeLine("Welcome to the Plantagotchi" + Environment.NewLine);
+            TypeLineFast("*********************************" + Environment.NewLine);
+            TypeLine("Please enter a name for your plant: " + Environment.NewLine);
             string name = Console.ReadLine();
-            Console.Write("What species is this plant? ");
+            TypeLine("What species is this plant? " + Environment.NewLine);
             string species = Console.ReadLine();
             Plant plant = new Plant();
             plant.Name = name;
             plant.Species = species;
-            Console.WriteLine("**********************************");
+            TypeLineFast("**********************************" + Environment.NewLine);
             plant.DisplayStats();
-            Console.WriteLine("**********************************");
-            Console.WriteLine("Are you ready to grow? (yes or no)");
+            TypeLineFast("**********************************" + Environment.NewLine);
+            TypeLine("Are you ready to grow? (yes or no)" + Environment.NewLine);
             string response = Console.ReadLine();
             if (response == "yes" || response == "Yes")
             {
@@ -126,7 +130,7 @@ namespace Grow.Models
             }
             else
             {
-                Console.WriteLine("I guess we'll start over...");
+                TypeLine("I guess we'll start over..." + Environment.NewLine);
                 EndGame();
             }
         }
@@ -144,13 +148,13 @@ namespace Grow.Models
             else 
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("**********************************");
+                TypeLineFast("**********************************" + Environment.NewLine);
                 RandColor();
-                Console.WriteLine("Today is a new day! Let's see what nature has in store for you today. Do you want to do something with your plant? (yes or no)");
+                TypeLine("Today is a new day! Let's see what nature has in store for you today. Do you want to do something with your plant? (yes or no)" + Environment.NewLine);
                 string input = Console.ReadLine();
                 if (input == "yes" || input == "Yes")
                 {
-                    Console.WriteLine("Choose what to give your plant: (water, food or sun)");
+                    TypeLine("Choose what to give your plant: (water, food or sun)" + Environment.NewLine);
                     string choice = Console.ReadLine();
                     if (choice == "water" || choice == "Water")
                     {
@@ -188,13 +192,13 @@ namespace Grow.Models
         {
             Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("Your plant didn't make it.");
+            TypeLine("Your plant didn't make it." + Environment.NewLine);
         }
         public static void Harvest()
         {
             Console.BackgroundColor = ConsoleColor.Green;
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("Your plant has outgrown its pot! Its time to harvest!");
+            TypeLine("Your plant has outgrown its pot! Its time to harvest!" + Environment.NewLine);
         }
         public static void RandColor()
         {
@@ -222,7 +226,23 @@ namespace Grow.Models
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
             }
-
+        }
+        static void TypeLine(string line) 
+        {
+            for (int i = 0; i < line.Length; i++) 
+            {
+                Console.Write(line[i]);
+                System.Threading.Thread.Sleep(50);
+            }
+        }
+        
+        static void TypeLineFast(string line) 
+        {
+            for (int i = 0; i < line.Length; i++) 
+            {
+                Console.Write(line[i]);
+                System.Threading.Thread.Sleep(20);
+            }
         }
    }
 }
