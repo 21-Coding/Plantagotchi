@@ -104,6 +104,7 @@ namespace Grow.Models
 
         public static void StartGame()
         {
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("*********************************");
             Console.WriteLine("Welcome to the Plantagotchi");
             Console.WriteLine("*********************************");
@@ -142,7 +143,9 @@ namespace Grow.Models
             }
             else 
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("**********************************");
+                RandColor();
                 Console.WriteLine("Today is a new day! Let's see what nature has in store for you today. Do you want to do something with your plant? (yes or no)");
                 string input = Console.ReadLine();
                 if (input == "yes" || input == "Yes")
@@ -183,11 +186,43 @@ namespace Grow.Models
 
         public static void EndGame()
         {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("Your plant didn't make it.");
         }
         public static void Harvest()
         {
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("Your plant has outgrown its pot! Its time to harvest!");
+        }
+        public static void RandColor()
+        {
+            Random randNum = new Random();
+            int index = randNum.Next(1, 6);
+            
+            if (index == 1)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+            } 
+            else if (index == 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+
+            }
+            else if (index == 3)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            else if (index == 4)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+            else if (index == 5)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            }
+
         }
    }
 }
