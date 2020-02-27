@@ -25,18 +25,21 @@ namespace Grow.Models
 
         public void Water()
         {
+            Console.WriteLine("**********************************");
             Console.WriteLine("Your plant got watered!");
             Hydration += 5;
             Maturity +=5;
         }
         public void Feed()
         {
+            Console.WriteLine("**********************************");
             Console.WriteLine("Your plant got some nutrition!");
             Hunger += 5;
             Maturity +=5;
         }
         public void GiveSunshine()
         {
+            Console.WriteLine("**********************************");
             Console.WriteLine("Your plant soaked up some serious sun");
             Sun +=5;
             Maturity +=5;
@@ -67,32 +70,36 @@ namespace Grow.Models
         }
         private void Windstorm()
         {
+            Console.WriteLine("**********************************");
             Console.WriteLine("~~~~There was a crazy windstorm! Hydration is lost~~~~");
             Hydration -= 5;
         }
         private void AphidAttack()
         {
+            Console.WriteLine("**********************************");
             Console.WriteLine("~~~~Aphids attacked! Your plant needs nutrition~~~~~");
             Hunger -= 5;
         }
         private void CloudAttack()
         {
+            Console.WriteLine("**********************************");
             Console.WriteLine("~~~~Intense PNW clouds, your plant is desperate for sun~~~~~");
             Sun -= 5;
         }
         private void ClearDay()
         {
+            Console.WriteLine("**********************************");
             Console.WriteLine("~~~~It was a lovely day and your plant was happy~~~~");
         }
 
         public void DisplayStats()
         {
             Console.WriteLine("**********************************");
-            Console.WriteLine(Name + " current stats:");
-            Console.WriteLine("Current water level: " + Hydration);
-            Console.WriteLine("Current nutrition level: " + Hunger);
-            Console.WriteLine("Current sun level: " + Sun);
-            Console.WriteLine("Current maturation level: " + Maturity);
+            Console.WriteLine(Name + "'s current stats:");
+            Console.WriteLine("Water level: " + Hydration);
+            Console.WriteLine("Nutrition level: " + Hunger);
+            Console.WriteLine("Sun level: " + Sun);
+            Console.WriteLine("Maturation level: " + Maturity);
         }
 
         public static void StartGame()
@@ -165,7 +172,7 @@ namespace Grow.Models
 
                     }
                 }
-                else if (input == "no" || input == "No")
+                else
                 {
                         Disaster();
                         DisplayStats();
