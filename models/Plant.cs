@@ -108,6 +108,7 @@ namespace Grow.Models
         {
             
             UnicodeEncoding unicode = new UnicodeEncoding();
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             TypeLineFast("*********************************" + Environment.NewLine);
             TypeLine("Welcome to the Plantagotchi" + Environment.NewLine);
@@ -122,6 +123,7 @@ namespace Grow.Models
             TypeLineFast("**********************************" + Environment.NewLine);
             plant.DisplayStats();
             TypeLineFast("**********************************" + Environment.NewLine);
+            TypeLine("Raise your plant to level 20 maturity to harvest, and make sure it doesn't run out of sun, food or water!" + Environment.NewLine);
             TypeLine("Are you ready to grow? (yes or no)" + Environment.NewLine);
             string response = Console.ReadLine();
             if (response == "yes" || response == "Yes")
@@ -148,9 +150,10 @@ namespace Grow.Models
             else 
             {
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
                 TypeLineFast("**********************************" + Environment.NewLine);
                 RandColor();
-                TypeLine("Today is a new day! Let's see what nature has in store for you today. Do you want to do something with your plant? (yes or no)" + Environment.NewLine);
+                TypeLine("Today is a new day! Let's see what nature has in store for you. Do you want to tend to your plant? (yes or no)" + Environment.NewLine);
                 string input = Console.ReadLine();
                 if (input == "yes" || input == "Yes")
                 {
@@ -161,6 +164,7 @@ namespace Grow.Models
                         Water();
                         Disaster();
                         DisplayStats();
+                        System.Threading.Thread.Sleep(5000);
                         RunGame();
                     }
                     else if (choice == "food" || choice == "Food")
@@ -168,6 +172,7 @@ namespace Grow.Models
                         Feed();
                         Disaster();
                         DisplayStats();
+                        System.Threading.Thread.Sleep(5000);
                         RunGame();
                     }
                     else if (choice == "sun" || choice == "Sun")
@@ -175,6 +180,7 @@ namespace Grow.Models
                         GiveSunshine();
                         Disaster();
                         DisplayStats();
+                        System.Threading.Thread.Sleep(5000);
                         RunGame();
 
                     }
@@ -183,6 +189,7 @@ namespace Grow.Models
                 {
                         Disaster();
                         DisplayStats();
+                        System.Threading.Thread.Sleep(5000);
                         RunGame();
                 }
             }
@@ -192,7 +199,7 @@ namespace Grow.Models
         {
             Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.Black;
-            TypeLine("Your plant didn't make it." + Environment.NewLine);
+            TypeLine("Your plant didn't make it. GAME OVER!" + Environment.NewLine);
         }
         public static void Harvest()
         {
@@ -241,7 +248,7 @@ namespace Grow.Models
             for (int i = 0; i < line.Length; i++) 
             {
                 Console.Write(line[i]);
-                System.Threading.Thread.Sleep(20);
+                System.Threading.Thread.Sleep(10);
             }
         }
    }
