@@ -109,7 +109,8 @@ namespace Grow.Models
         public static void StartGame()
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.BackgroundColor = ConsoleColor.Black;
             TypeLineFast("🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱" + Environment.NewLine);
             TypeLine("Welcome to Plantagotchi" + Environment.NewLine);
             TypeLineFast("🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱" + Environment.NewLine);
@@ -149,7 +150,7 @@ namespace Grow.Models
             }
             else 
             {
-                Console.ForegroundColor = ConsoleColor.White;
+                
                 Console.Clear();
                 TypeLineFast("             🌞            " + Environment.NewLine);
                 RandColor();
@@ -218,7 +219,7 @@ namespace Grow.Models
             } 
             else if (index == 2)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.White;
 
             }
             else if (index == 3)
@@ -231,7 +232,7 @@ namespace Grow.Models
             }
             else if (index == 5)
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.ForegroundColor = ConsoleColor.Magenta;
             }
         }
         static void TypeLine(string line) 
